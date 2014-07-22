@@ -1,3 +1,3 @@
-SimpleMVVM.Messenger
+MVVM Messenger
 ====================
-Messenger Service is designed for MVVM pattern to communicate and transfer data between ViewModels. 
+MVVM Messenger is service that provides communication and data transfer between viewmodels. 
