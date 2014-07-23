@@ -5,7 +5,7 @@ using MessengerService.Core;
 namespace MessengerService.Service
 {
     /// <summary>
-    /// Provides communication between viewmodels
+    /// Manages communication between viewmodels
     /// </summary>
     public class Messenger : IMessenger
     {        

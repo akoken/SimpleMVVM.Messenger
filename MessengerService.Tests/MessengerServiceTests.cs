@@ -16,7 +16,16 @@ namespace MessengerService.Tests
         }
 
         [TestMethod]
-        public void SendShouldBroadcastMessageToSubscribers()
+        public void MessengerService_Should_Be_Singleton()
+        {
+            IMessenger messenger1 = Messenger.Default;
+            IMessenger messenger2 = Messenger.Default;
+
+            Assert.AreSame(messenger1, messenger2);
+        }
+
+        [TestMethod]
+        public void Send_Should_Broadcast_Message_To_Subscribers()
         {
             IMessenger messenger = Messenger.Default;            
             var actual = 0;
@@ -36,7 +45,7 @@ namespace MessengerService.Tests
         }
 
         [TestMethod]
-        public void UnregisterShouldNotReceiveMessage()
+        public void Unregister_Should_Not_Receive_Message()
         {
             IMessenger messenger = Messenger.Default;                        
 
