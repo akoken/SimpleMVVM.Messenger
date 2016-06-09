@@ -30,42 +30,32 @@ namespace MessengerService.Tests
             IMessenger messenger = Messenger.Default;            
             var actual = 0;
             var expected = 5;
-
-            //Arrange
+            
             messenger.Register<int>(message =>
             {
                 actual = message;
             });
 
-            //Act
             messenger.Send<int>(5);
-
-            //Assert
+            
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Unregister_Should_Not_Receive_Message()
         {
-            IMessenger messenger = Messenger.Default;                        
+            IMessenger messenger = Messenger.Default;        
 
-            //Arrange
             messenger.Register<int>(RegisterMessageReceived);
-
-            messenger.Unregister<int>(RegisterMessageReceived);
-
-            //Act
+            messenger.Unregister<int>(RegisterMessageReceived);            
             messenger.Send<int>(5);
 
-            //Assert
             Assert.IsFalse(IsMessageReceived);
-
         }
 
         void RegisterMessageReceived(int message)
         {
             IsMessageReceived = true;
         }      
-
     }
 }
