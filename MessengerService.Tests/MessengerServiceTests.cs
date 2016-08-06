@@ -1,30 +1,28 @@
 ﻿using MessengerService.Core;
 using MessengerService.Service;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace MessengerService.Tests
-{
-    [TestClass]
+{    
     public class MessengerServiceTests
     {
         public bool IsMessageReceived { get; set; }
-
-        [TestInitialize]
-        public void Initialize()
+        
+        public MessengerServiceTests()
         {
             IsMessageReceived = false;
         }
 
-        [TestMethod]
+        [Fact]
         public void MessengerService_Should_Be_Singleton()
         {
             IMessenger messenger1 = Messenger.Default;
             IMessenger messenger2 = Messenger.Default;
 
-            Assert.AreSame(messenger1, messenger2);
+            Assert.Same(messenger1, messenger2);
         }
 
-        [TestMethod]
+        [Fact]
         public void Send_Should_Broadcast_Message_To_Subscribers()
         {
             IMessenger messenger = Messenger.Default;            
@@ -36,21 +34,21 @@ namespace MessengerService.Tests
                 actual = message;
             });
 
-            messenger.Send<int>(5);
+            messenger.Send(5);
             
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void Unregister_Should_Not_Receive_Message()
         {
             IMessenger messenger = Messenger.Default;        
 
             messenger.Register<int>(RegisterMessageReceived);
             messenger.Unregister<int>(RegisterMessageReceived);            
-            messenger.Send<int>(5);
+            messenger.Send(5);
 
-            Assert.IsFalse(IsMessageReceived);
+            Assert.False(IsMessageReceived);
         }
 
         void RegisterMessageReceived(int message)
