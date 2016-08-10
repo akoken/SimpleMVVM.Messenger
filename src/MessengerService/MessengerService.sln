@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{04BA89
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerService.Tests", "..\..\test\MessengerService.Tests\MessengerService.Tests.csproj", "{94BC8848-7F7A-4A0C-93D4-A60F63304171}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerService.Tests", "..\..\tests\MessengerService.Tests\MessengerService.Tests.csproj", "{94BC8848-7F7A-4A0C-93D4-A60F63304171}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
